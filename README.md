@@ -1,8 +1,5 @@
 # Sistema de Gestión de Transporte y Logística
 
-# Trabajo Practico Integrador Backend
-# Grupo 64
-
 # Estructuracion Proyecto (Posible puede cambiar)
 
 com/tup/tpfinal/
