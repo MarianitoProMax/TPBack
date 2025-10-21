@@ -6,14 +6,18 @@
 # Estructuracion Proyecto (Posible puede cambiar)
 
 com/tup/tpfinal/
-│
-├── TpFinalApplication.java         (La clase que inicia todo)
-│
-├── controller/ Controladores, APIRest
-├── service/ Servicio, Logica de negocio
-├── model/ Modelos, entidades de negocio
-├── repository/ Repositorios, mapean entidades en base de datos (Usemos una sola base de datos, se puede discutir)
-└── dto/ Data Transfer Object (Para no mandar con todo el objeto de negocio si no existe de necesidad de mostrar todos los atributos)
+|
+|--- TpFinalApplication.java    (La clase principal que inicia toda la aplicación)
+|
+|--- controller/            (Controladores, API REST. Reciben peticiones HTTP)
+|
+|--- service/               (Servicios. Aquí reside la lógica de negocio)
+|
+|--- model/                 (Modelos/Entidades. Representan las tablas de la BD)
+|
+|--- repository/            (Repositorios. Interfaces que consultan la BD)
+|
+\--- dto/                   (Data Transfer Object. Para enviar y recibir datos)
 
 Este proyecto es el backend para una aplicación de gestión de transporte, desarrollado en **Java** con **Spring Boot**. Permite a los clientes crear solicitudes de envío y a los administradores y operadores gestionar todo el ciclo de vida de la logística, incluyendo la asignación de rutas, camiones y el seguimiento de los tramos. También incluye un módulo completo para la administración de clientes (CRUD).
 
