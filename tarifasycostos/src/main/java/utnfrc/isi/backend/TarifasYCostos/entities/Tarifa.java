@@ -3,6 +3,8 @@ package utnfrc.isi.backend.TarifasYCostos.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tarifa")
@@ -38,4 +40,5 @@ public class Tarifa {
 
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT NOW()")
     private LocalDateTime fechaActualizacion;
+
 }

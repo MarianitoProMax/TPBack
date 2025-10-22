@@ -52,4 +52,26 @@ public class Tramo {
 
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT NOW()")
     private LocalDateTime fechaActualizacion;
+
+    // ============ RELACIÓN 1:N con Camión (en microservicio FlotaYDepositos) ============
+    // Almacenamos el ID del camión asignado a este tramo
+    @Column(name = "id_camion")
+    private Long idCamion;
+
+    // Método para asignar un camión
+    public void asignarCamion(Long idCamionAsignado) {
+        this.idCamion = idCamionAsignado;
+        this.estado = "ASIGNADO";
+    }
+
+    // Método para desasignar un camión
+    public void desasignarCamion() {
+        this.idCamion = null;
+        this.estado = "PENDIENTE";
+    }
+
+    // Método para verificar si tiene camión asignado
+    public Boolean tieneCamionAsignado() {
+        return this.idCamion != null;
+    }
 }

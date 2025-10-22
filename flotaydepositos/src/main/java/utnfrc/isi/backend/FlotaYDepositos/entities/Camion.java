@@ -3,6 +3,7 @@ package utnfrc.isi.backend.FlotaYDepositos.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -39,6 +40,7 @@ public class Camion {
     private Double consumoCombustiblePromedio;
 
     @Column(nullable = false)
+    @Builder.Default
     private Boolean disponible = true;
 
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT NOW()")
@@ -47,4 +49,10 @@ public class Camion {
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT NOW()")
     private LocalDateTime fechaActualizacion;
 
+    // ============ RELACIÓN 1:N con Tramo (en microservicio GestionDeEnvios) ============
+    // Almacenamos los IDs de los tramos del otro microservicio
+    @Column(name = "id_tramo", columnDefinition = "jsonb")
+    @Builder.Default
+
+    private List<Long> idsTramos = new ArrayList<>();
 }

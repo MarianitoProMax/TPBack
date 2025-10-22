@@ -19,6 +19,8 @@ public class Solicitud {
     @Column(nullable = false, unique = true, length = 20)
     private String numeroSolicitud;
 
+    @Column(name = "id_cliente")
+    private Long idCliente;
 
     @OneToOne
     @JoinColumn(name = "id_contenedor", nullable = false, unique = true)
@@ -43,6 +45,18 @@ public class Solicitud {
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT NOW()")
     private LocalDateTime fechaActualizacion;
 
-    @OneToOne(mappedBy = "id_solicitud")
+    @OneToOne(mappedBy = "id_ruta")
     private Ruta ruta;
+
+    public void asignarCliente(Long idClienteAsignado) {
+        this.idCliente = idClienteAsignado;
+    }
+
+    public void desasignarCliente() {
+        this.idCliente = null;
+    }
+
+    public boolean tieneClienteAsignado() {
+        return this.idCliente != null;
+    }
 }
