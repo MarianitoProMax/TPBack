@@ -1,4 +1,4 @@
-package utnfrc.isi.backend.geoapi;
+package utnfrc.isi.backend.GeoApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

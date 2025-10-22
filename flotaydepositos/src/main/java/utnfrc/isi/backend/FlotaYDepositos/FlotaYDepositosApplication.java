@@ -1,4 +1,4 @@
-package utnfrc.isi.backend.flotaydepositos;
+package utnfrc.isi.backend.FlotaYDepositos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package utnfrc.isi.backend.gestiondeenvios;
+package utnfrc.isi.backend.GestionDeEnvios;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
