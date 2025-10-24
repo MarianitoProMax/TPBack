@@ -1,10 +1,12 @@
 package utnfrc.isi.backend.FlotaYDepositos.dto;
 
+import java.math.BigDecimal;
+
 public record DepositoDTO(
     Long idDeposito,
     String nombre,
     String direccion,
-    Double latitud,
-    Double longitud,
-    Double costoEstadiaDiario
+    BigDecimal latitud,
+    BigDecimal longitud,
+    BigDecimal costoEstadiaDiario
 ) {}

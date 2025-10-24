@@ -2,6 +2,8 @@ package utnfrc.isi.backend.FlotaYDepositos.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,14 +24,14 @@ public class Deposito {
     @Lob
     private String direccion;
 
-    @Column(nullable = false, precision = 10, scale = 7)
-    private Double latitud;
+    @Column(nullable = false, precision = 10)
+    private BigDecimal latitud;
 
-    @Column(nullable = false, precision = 10, scale = 7)
-    private Double longitud;
+    @Column(nullable = false, precision = 10)
+    private BigDecimal longitud;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private Double costoEstadiaDiario;
+    @Column(nullable = false, precision = 10)
+    private BigDecimal costoEstadiaDiario;
 
     @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT NOW()")
     private LocalDateTime fechaCreacion;

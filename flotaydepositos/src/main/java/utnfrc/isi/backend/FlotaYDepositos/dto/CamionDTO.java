@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +19,10 @@ public class CamionDTO {
     private String dominio;
     private String nombreTransportista;
     private String telefono;
-    private Double capacidadPeso;
-    private Double capacidadVolumen;
-    private Double costoBaseKm;
-    private Double consumoCombustiblePromedio;
+    private BigDecimal capacidadPeso;
+    private BigDecimal capacidadVolumen;
+    private BigDecimal costoBaseKm;
+    private BigDecimal consumoCombustiblePromedio;
     private Boolean disponible;
     
     @Builder.Default

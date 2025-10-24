@@ -2,6 +2,8 @@ package utnfrc.isi.backend.FlotaYDepositos.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +29,17 @@ public class Camion {
     @Column(length = 20)
     private String telefono;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private Double capacidadPeso;
+    @Column(nullable = false, precision = 10)
+    private BigDecimal capacidadPeso;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private Double capacidadVolumen;
+    @Column(nullable = false, precision = 10)
+    private BigDecimal capacidadVolumen;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private Double costoBaseKm;
+    @Column(nullable = false, precision = 10)
+    private BigDecimal costoBaseKm;
 
-    @Column(precision = 10, scale = 2)
-    private Double consumoCombustiblePromedio;
+    @Column(precision = 10)
+    private BigDecimal consumoCombustiblePromedio;
 
     @Column(nullable = false)
     @Builder.Default

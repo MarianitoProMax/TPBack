@@ -9,6 +9,7 @@ import utnfrc.isi.backend.FlotaYDepositos.entities.Camion;
 import utnfrc.isi.backend.FlotaYDepositos.repository.CamionRepository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,16 +21,20 @@ public class CamionServiceImpl implements CamionService {
     private final CamionRepository camionRepository;
 
     private CamionDTO convertToDto(Camion camion) {
-        return new CamionDTO(
-                camion.getIdCamion(),
-                camion.getDominio(),
-                camion.getNombreTransportista(),
-                camion.getTelefono(),
-                camion.getCapacidadPeso(),
-                camion.getCapacidadVolumen(),
-                camion.getDisponibilidad(),
-                camion.getCostoPorKm()
-        );
+        return CamionDTO.builder()
+                .idCamion(camion.getIdCamion())
+                .dominio(camion.getDominio())
+                .nombreTransportista(camion.getNombreTransportista())
+                .telefono(camion.getTelefono())
+                .capacidadPeso(camion.getCapacidadPeso())
+                .capacidadVolumen(camion.getCapacidadVolumen())
+                .costoBaseKm(camion.getCostoBaseKm())
+                .consumoCombustiblePromedio(camion.getConsumoCombustiblePromedio())
+                .disponible(camion.getDisponible())
+                .idsTramos(new ArrayList<>()) // Añadido porque causaba error 
+                .fechaCreacion(camion.getFechaCreacion())
+                .fechaActualizacion(camion.getFechaActualizacion())
+                .build();
     }
 
     private Camion convertToEntity(CreateCamionRequestDTO dto) {
@@ -39,9 +44,9 @@ public class CamionServiceImpl implements CamionService {
                .telefono(dto.telefono())
                .capacidadPeso(dto.capacidadPeso())
                .capacidadVolumen(dto.capacidadVolumen())
-               .disponibilidad(dto.disponibilidad())
-               .costoPorKm(dto.costoPorKm())
-               .consumoCombustiblePorKm(dto.consumoCombustiblePorKm())
+               .disponible(dto.disponible())
+               .costoBaseKm(dto.costoPorKm())
+               .consumoCombustiblePromedio(dto.consumoCombustiblePorKm())
                .build();
     }
 
@@ -72,7 +77,7 @@ public class CamionServiceImpl implements CamionService {
     @Override
     @Transactional(readOnly = true)
     public List<CamionDTO> getCamionesByDisponibilidad(boolean disponible) {
-        return camionRepository.findByDisponibilidad(disponible).stream()
+        return camionRepository.findByDisponible(disponible).stream()
                .map(this::convertToDto)
                .collect(Collectors.toList());
     }
@@ -88,9 +93,9 @@ public class CamionServiceImpl implements CamionService {
         camion.setTelefono(requestDTO.telefono());
         camion.setCapacidadPeso(requestDTO.capacidadPeso());
         camion.setCapacidadVolumen(requestDTO.capacidadVolumen());
-        camion.setDisponibilidad(requestDTO.disponibilidad());
-        camion.setCostoPorKm(requestDTO.costoPorKm());
-        camion.setConsumoCombustiblePorKm(requestDTO.consumoCombustiblePorKm());
+        camion.setDisponible(requestDTO.disponible());
+        camion.setCostoBaseKm(requestDTO.costoPorKm());
+        camion.setConsumoCombustiblePromedio(requestDTO.consumoCombustiblePorKm());
         camion.setFechaActualizacion(LocalDateTime.now());
 
         Camion updatedCamion = camionRepository.save(camion);
@@ -105,4 +110,6 @@ public class CamionServiceImpl implements CamionService {
         }
         camionRepository.deleteById(id);
     }
+
+
 }
